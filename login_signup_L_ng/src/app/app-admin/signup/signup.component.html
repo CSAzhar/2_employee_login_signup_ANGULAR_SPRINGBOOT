@@ -1,0 +1,86 @@
+
+<h2 align="center">Fill the Form</h2>
+<div class="outer">
+
+    
+
+    <div class="form">
+
+        <form [formGroup]="person" (ngSubmit)="save()">
+    
+            <h2> {{submittionStatus}} </h2>
+        
+            First Name: <input type="text" formControlName="firstName"> 
+            <span *ngIf="firstName?.touched && firstName?.errors?.['required']">
+                <strong style="color: red;">&nbsp; *First Name is Required</strong>
+            </span>
+            <span *ngIf="firstName?.touched && firstName?.errors?.['minlength']">
+                First Name should be at least 3 character long
+            </span>
+            <span *ngIf="firstName?.touched && firstName?.errors?.['maxlength']">
+                First Name cannot be more than 25 character long
+            </span>
+            <span *ngIf="firstName?.touched && firstName?.errors?.['pattern']">
+                First Name can only contain lowercase alphabets
+            </span>
+            <br> <br>
+        
+        
+            Last Name: <input type="text" formControlName="lastName"> 
+            <span *ngIf="lastName?.touched && lastName?.errors?.['required']">
+                Last Name is Required
+            </span>
+            <span *ngIf="lastName?.touched && lastName?.errors?.['minlength']">
+                Last Name should be at least 3 character long
+            </span>
+            <span *ngIf="lastName?.touched && lastName?.errors?.['maxlength']">
+                Last Name cannot be more than 25 character long
+            </span>
+            <span *ngIf="lastName?.touched && lastName?.errors?.['pattern']">
+                Last Name can only contain lowercase alphabets
+            </span>
+            <br> <br>
+            
+        
+            Username: <input type="text" formControlName="username"> 
+            
+            <span *ngIf="username?.touched && username?.errors?.['required']">
+                Username is Required
+            </span>
+            <span *ngIf="username?.touched && username?.errors?.['email']">
+                Username must be valid
+            </span>
+            <br> <br>
+        
+        
+            Password: <input type="password" formControlName="password"> 
+            <span *ngIf="password?.touched && password?.errors?.['required']">
+                Password is Required
+            </span>
+            <span *ngIf="password?.touched && !password?.errors?.['required'] && !checkStrongPassword()">
+                <span style="color: red;">&nbsp;{{ strongCheckMessage }}</span>
+            </span>
+            
+            <br> <br>
+        
+            Confirm Password: <input type="password" formControlName="confirmPassword"> 
+            <span *ngIf="confirmPassword?.touched && confirmPassword?.errors?.['required']">
+                Confirm Password is Required
+            </span>
+            <span *ngIf="confirmPassword?.touched && !confirmPassword?.errors?.['required'] && !checkConfirmStrongPassword()">
+                <span style="color: red;">&nbsp;{{ strongConfirmCheckMessage }}</span>
+            </span>
+            
+            <br> <br>
+        
+        
+            <button type="submit" [disabled]="person.invalid">Submit</button>>
+        </form>
+
+    </div> <br>
+
+    <div>
+        <a routerLink="/forgotten-pw">Click to forgot Passweord</a>
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+.form{
+    align-self: center;
+    background-color: antiquewhite;
+    width: 60%;
+    height: 70%;
+}
+
+/* .outer{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+} */
